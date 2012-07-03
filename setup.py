@@ -15,6 +15,9 @@ try:
 except ImportError:
     print "A recent version of Cython is required to build PyWavelets. Get Cython from http://www.cython.org/!"
     sys.exit(1)
+else:
+    from Cython.Compiler.Main import compile
+    compile('src/_pywt.pyx')
 
 # tune the C compiler settings
 extra_compile_args = ['-fwrapv', '-O2', '-Wall', '-fno-strict-aliasing', '-finline-limit=1',] # '-msse2'] #, '-ftree-vectorize', '-ftree-vectorizer-verbose=7']
